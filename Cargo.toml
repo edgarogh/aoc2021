@@ -2,7 +2,7 @@
 name = "aoc2021"
 version = "0.1.0"
 edition = "2021"
-author = "Edgar Onghena <dev@edgar.bzh>"
+authors = ["Edgar Onghena <dev@edgar.bzh>"]
 
 [dependencies]
 aoc-main = "0.3.0"
