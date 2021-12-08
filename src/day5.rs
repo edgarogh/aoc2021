@@ -44,7 +44,7 @@ impl Iterator for Line {
                 (start.0 as isize + self.offset.0 as isize) as u16,
                 (start.1 as isize + self.offset.1 as isize) as u16,
             );
-            
+
             if self.start == self.end {
                 self.offset = (0, 0);
             }
@@ -79,19 +79,28 @@ pub fn generator(input: &str) -> Vec<Line> {
     input.lines().map(|line| line.parse().unwrap()).collect()
 }
 
-pub fn part_1(input: impl AsRef<[Line]>) -> usize {
+pub fn count_overlaps(input: impl AsRef<[Line]>, straight_only: bool) -> usize {
     let mut grid = vec![0; 1000 * 1000];
 
-    input.as_ref()
+    input
+        .as_ref()
         .iter()
         .cloned()
-        .filter(|l| l.is_straight())
+        .filter(|l| !straight_only || l.is_straight())
         .flatten()
         .for_each(|(x, y)| {
             grid[x as usize + 1000 * y as usize] += 1;
         });
-    
+
     grid.into_iter().filter(|n| *n > 1).count()
+}
+
+pub fn part_1(input: impl AsRef<[Line]>) -> usize {
+    count_overlaps(input, true)
+}
+
+pub fn part_2(input: impl AsRef<[Line]>) -> usize {
+    count_overlaps(input, false)
 }
 
 #[cfg(test)]
