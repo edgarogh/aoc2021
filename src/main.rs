@@ -1,12 +1,19 @@
-#![feature(portable_simd)]
+#![feature(
+    inline_const,
+    maybe_uninit_array_assume_init,
+    maybe_uninit_extra,
+    portable_simd
+)]
 
 mod day1;
 mod day2;
 mod day3;
+mod day5;
 
 aoc_main::main! {
     year 2021;
     day1 : generator => part_1, part_2;
     day2 : generator => part_1, part_2;
     day3 : generator => part_1, part_2;
+    day5 : generator => part_1;
 }
