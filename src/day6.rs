@@ -6,21 +6,6 @@ pub fn generator(input: &str) -> Vec<u8> {
         .unwrap_or_default()
 }
 
-pub fn tick(lanterns: &mut Vec<u8>) {
-    let mut babies = 0;
-
-    for lantern in lanterns.iter_mut() {
-        if *lantern == 0 {
-            *lantern = 6;
-            babies += 1;
-        } else {
-            *lantern -= 1;
-        }
-    }
-
-    lanterns.extend(std::iter::repeat(8).take(babies));
-}
-
 fn simulate_for(input: &Vec<u8>, days: usize) -> usize {
     let mut lanterns = [0usize; 9];
 
