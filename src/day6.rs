@@ -21,12 +21,20 @@ pub fn tick(lanterns: &mut Vec<u8>) {
     lanterns.extend(std::iter::repeat(8).take(babies));
 }
 
-pub fn part_1(input: &Vec<u8>) -> usize {
+fn simulate_for(input: &Vec<u8>, days: usize) -> usize {
     std::iter::repeat(())
-        .take(80)
+        .take(days)
         .fold(input.clone(), |mut lanterns, _| {
             tick(&mut lanterns);
             lanterns
         })
         .len()
+}
+
+pub fn part_1(input: &Vec<u8>) -> usize {
+    simulate_for(input, 80)
+}
+
+pub fn part_2(input: &Vec<u8>) -> usize {
+    simulate_for(input, 256)
 }
