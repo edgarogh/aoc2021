@@ -52,7 +52,7 @@ fn select_rating(input: &mut Vec<u16>, max: bool) -> u16 {
             .map(|n| n & mask != 0)
             .map(|n| n == max)
             .fold((0, 0), |(f, t), n| (f + !n as usize, t + n as usize));
-        
+
         let check = match ft {
             (f, t) if t < f => 0,
             (f, t) if t > f => mask,
@@ -77,7 +77,7 @@ pub fn part_2(input: impl AsRef<[mask8x16]>) -> u64 {
         .cloned()
         .map(mask8x16_to_u16)
         .collect::<Vec<_>>();
-    
+
     let (mut input_u16_o2, mut input_u16_co2) = (input_u16.clone(), input_u16);
 
     let rating_o2 = select_rating(&mut input_u16_o2, true) as u64;

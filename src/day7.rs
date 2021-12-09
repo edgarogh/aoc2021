@@ -26,10 +26,7 @@ fn fuel_cost_2(input: &[u16], attempt: u16) -> usize {
 fn best_attempt(input: impl AsRef<[u16]>, fuel_cost: impl Fn(&[u16], u16) -> usize) -> usize {
     let input = input.as_ref();
 
-    (0..1000)
-        .map(|i| fuel_cost(input, i))
-        .min()
-        .unwrap()
+    (0..1000).map(|i| fuel_cost(input, i)).min().unwrap()
 }
 
 pub fn part_1(input: impl AsRef<[u16]>) -> usize {
