@@ -20,5 +20,7 @@ jobs:
     - uses: Swatinem/rust-cache@v1
     - name: Build
       run: cargo build --release --verbose
+    - name: Test
+      run: cargo test
     - name: Run
       run: cargo run --release
