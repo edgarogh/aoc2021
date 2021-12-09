@@ -1,5 +1,6 @@
 #![feature(
     inline_const,
+    int_abs_diff,
     maybe_uninit_array_assume_init,
     maybe_uninit_extra,
     portable_simd
